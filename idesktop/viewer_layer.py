@@ -78,6 +78,54 @@ try { for (const s of ['left','right']) if (!localStorage.getItem('tray-'+s)) lo
    stroke-linecap:round; stroke-linejoin:round; opacity:.92 }
  .ext-pill:not(.show) { display:none }
  body.ext-compact #ext-to-compact, body.ext-compact #ext-more-btn { display:none }
+
+ /* iDesktop redesign: restrained Apple-inspired glass controls. */
+ #bottom-row .btn, .btn {
+   border-radius: 999px !important;
+   color: #f5f7ff !important;
+   background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.055)) !important;
+   border: 1px solid rgba(255,255,255,.18) !important;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 4px 14px rgba(0,0,0,.18) !important;
+   backdrop-filter: blur(18px) saturate(145%);
+   -webkit-backdrop-filter: blur(18px) saturate(145%);
+   transition: background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+ }
+ #bottom-row .btn:hover, .btn:hover {
+   background: linear-gradient(145deg, rgba(255,255,255,.24), rgba(255,255,255,.09)) !important;
+   border-color: rgba(255,255,255,.30) !important;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 6px 18px rgba(0,0,0,.24) !important;
+ }
+ #bottom-row .btn:active, .btn:active { transform: scale(.96); }
+ .ext-fab {
+   width: 42px;
+   height: 42px;
+   border-radius: 50% !important;
+   background: linear-gradient(145deg, rgba(255,255,255,.22), rgba(255,255,255,.07)) !important;
+   border: 1px solid rgba(255,255,255,.20) !important;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 5px 18px rgba(0,0,0,.24) !important;
+   backdrop-filter: blur(20px) saturate(150%);
+   -webkit-backdrop-filter: blur(20px) saturate(150%);
+ }
+ .ext-fab:hover { background: rgba(255,255,255,.25) !important; }
+ .ext-pill {
+   border-radius: 999px !important;
+   background: linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.055)) !important;
+   border: 1px solid rgba(255,255,255,.13) !important;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 4px 14px rgba(0,0,0,.16) !important;
+   backdrop-filter: blur(18px) saturate(145%);
+   -webkit-backdrop-filter: blur(18px) saturate(145%);
+ }
+ .ext-pill:hover { background: rgba(255,255,255,.22) !important; }
+ .ext-pill.on { background: rgba(80,155,255,.24) !important; color: #b8d9ff !important; }
+ body.ext-compact #ext-homebar {
+   border-radius: 999px !important;
+   background: rgba(255,255,255,.18) !important;
+   border: 1px solid rgba(255,255,255,.16);
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 4px 14px rgba(0,0,0,.20) !important;
+   backdrop-filter: blur(18px);
+   -webkit-backdrop-filter: blur(18px);
+ }
+
 </style>
 """
 
