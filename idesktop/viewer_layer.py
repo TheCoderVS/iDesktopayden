@@ -470,6 +470,216 @@ try { for (const s of ['left','right']) if (!localStorage.getItem('tray-'+s)) lo
    backdrop-filter: blur(22px) !important;
  }
 
+
+ /* ═══════════════════════════════════════════════════════════════════════
+    IDESKTOP AURORA — complete visual system refresh
+    Visual-only layer: keeps the upstream DOM, handlers and stream untouched.
+    ═══════════════════════════════════════════════════════════════════════ */
+ :root {
+   color-scheme: dark;
+   --aurora-ink: #f7f5ff;
+   --aurora-muted: #a8a8ca;
+   --aurora-line: rgba(220,220,255,.16);
+   --aurora-glass: rgba(18,19,57,.76);
+   --aurora-glass-deep: rgba(12,13,43,.91);
+   --aurora-blue: #42d9ff;
+   --aurora-pink: #ec73e8;
+   --aurora-purple: #9b83ff;
+ }
+ body:not(.ext-compact) {
+   color: var(--aurora-ink) !important;
+   font-family: Inter, "Segoe UI Variable", "Segoe UI", system-ui, sans-serif !important;
+   background: transparent !important;
+   position: relative;
+   isolation: isolate;
+ }
+ html:has(body:not(.ext-compact)) {
+   background:
+     radial-gradient(ellipse 55% 48% at 4% 0%,rgba(0,204,255,.92),transparent 68%),
+     radial-gradient(ellipse 48% 42% at 96% 12%,rgba(47,118,255,.78),transparent 70%),
+     radial-gradient(ellipse 55% 48% at 78% 100%,rgba(217,63,220,.86),transparent 69%),
+     radial-gradient(ellipse 42% 38% at 0% 92%,rgba(120,82,255,.78),transparent 68%),
+     linear-gradient(135deg,#18205f 0%,#30216c 48%,#101d59 100%) !important;
+ }
+ body:not(.ext-compact)::before,
+ body:not(.ext-compact)::after {
+   content:""; position:fixed; z-index:-1; pointer-events:none;
+   filter:blur(2px); opacity:.95;
+ }
+ body:not(.ext-compact)::before {
+   width:78vw;height:34vh;left:8vw;top:-15vh;
+   border-radius:0 0 48% 52%; transform:rotate(-8deg);
+   background:linear-gradient(175deg,#00c9f5 0%,#3979ed 42%,#db5bd9 100%);
+   box-shadow:0 24px 90px rgba(7,9,42,.25);
+ }
+ body:not(.ext-compact)::after {
+   width:76vw;height:34vh;right:-8vw;bottom:-18vh;
+   border-radius:52% 48% 0 0;transform:rotate(-8deg);
+   background:linear-gradient(8deg,#00c5f4 0%,#6c65ed 48%,#e64bca 100%);
+   box-shadow:0 -20px 90px rgba(7,9,42,.25);
+ }
+ body:not(.ext-compact) #topbar {
+   min-height:54px !important; margin:16px 18px 12px !important;
+   padding:9px 16px !important; gap:12px !important;
+   border:1px solid var(--aurora-line) !important; border-radius:17px !important;
+   background:rgba(12,14,48,.72) !important;
+   box-shadow:0 18px 48px rgba(8,8,39,.28),inset 0 1px 0 rgba(255,255,255,.13) !important;
+   backdrop-filter:blur(28px) saturate(155%) !important;
+   -webkit-backdrop-filter:blur(28px) saturate(155%) !important;
+ }
+ body:not(.ext-compact) #workspace {
+   gap:14px !important; padding:2px 18px 16px !important;
+   align-items:stretch !important;
+ }
+ body:not(.ext-compact) #left-tray,
+ body:not(.ext-compact) #right-tray {
+   border:1px solid rgba(218,218,255,.15) !important;
+   border-radius:18px !important;
+   background:linear-gradient(155deg,rgba(26,26,75,.86),rgba(11,13,43,.88)) !important;
+   box-shadow:0 22px 58px rgba(8,8,39,.32),inset 0 1px 0 rgba(255,255,255,.10) !important;
+   backdrop-filter:blur(28px) saturate(150%) !important;
+   -webkit-backdrop-filter:blur(28px) saturate(150%) !important;
+   overflow:hidden;
+ }
+ body:not(.ext-compact) #left-tray,
+ body:not(.ext-compact) #right-tray,
+ body:not(.ext-compact) #left-tray *,
+ body:not(.ext-compact) #right-tray * { scrollbar-width:thin; scrollbar-color:rgba(174,154,255,.42) transparent; }
+ body:not(.ext-compact) #stage-wrap {
+   padding:8px 10px 12px !important; gap:12px !important;
+   align-items:center !important;
+ }
+ body:not(.ext-compact) #stage {
+   border:1px solid rgba(225,224,255,.19) !important;
+   border-radius:25px !important;
+   background:linear-gradient(145deg,rgba(20,20,67,.76),rgba(8,11,39,.86)) !important;
+   box-shadow:0 28px 76px rgba(5,6,34,.40),inset 0 1px 0 rgba(255,255,255,.12) !important;
+   overflow:hidden;
+ }
+ body:not(.ext-compact) #stage::before {
+   content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+   background:radial-gradient(ellipse at 50% 0%,rgba(89,210,255,.10),transparent 56%),
+             linear-gradient(135deg,rgba(255,255,255,.035),transparent 45%,rgba(205,104,255,.055));
+ }
+ body:not(.ext-compact) #stage canvas {
+   position:relative;z-index:1;
+   box-shadow:0 20px 55px rgba(0,0,0,.36);
+ }
+ body:not(.ext-compact) #bottom-row {
+   display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+   gap:8px !important;padding:10px 13px !important;
+   margin:5px auto 14px !important;width:fit-content;max-width:calc(100% - 36px);
+   border:1px solid var(--aurora-line) !important;border-radius:17px !important;
+   background:rgba(13,14,48,.78) !important;
+   box-shadow:0 16px 42px rgba(7,8,35,.34),inset 0 1px 0 rgba(255,255,255,.12) !important;
+   backdrop-filter:blur(26px) saturate(155%) !important;
+   -webkit-backdrop-filter:blur(26px) saturate(155%) !important;
+ }
+ body:not(.ext-compact) button,
+ body:not(.ext-compact) .btn,
+ body:not(.ext-compact) a[role="button"] {
+   color:#f8f6ff !important;border:1px solid rgba(224,221,255,.18) !important;
+   border-radius:11px !important;
+   background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.045)) !important;
+   box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 5px 16px rgba(5,6,32,.18) !important;
+   transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease !important;
+ }
+ body:not(.ext-compact) button:hover,
+ body:not(.ext-compact) .btn:hover,
+ body:not(.ext-compact) a[role="button"]:hover {
+   transform:translateY(-1px);
+   background:linear-gradient(135deg,rgba(49,199,255,.23),rgba(205,104,255,.20)) !important;
+   border-color:rgba(192,175,255,.48) !important;
+   box-shadow:0 8px 22px rgba(5,6,32,.24),0 0 20px rgba(105,172,255,.10) !important;
+ }
+ body:not(.ext-compact) button:active,
+ body:not(.ext-compact) .btn:active { transform:scale(.97) !important; }
+ body:not(.ext-compact) input,
+ body:not(.ext-compact) select,
+ body:not(.ext-compact) textarea {
+   color:#f7f5ff !important;background:rgba(7,9,35,.58) !important;
+   border:1px solid rgba(221,218,255,.19) !important;border-radius:10px !important;
+   box-shadow:inset 0 1px 4px rgba(0,0,0,.18) !important;
+ }
+ body:not(.ext-compact) input:focus,
+ body:not(.ext-compact) select:focus,
+ body:not(.ext-compact) textarea:focus {
+   outline:none !important;border-color:rgba(72,216,255,.65) !important;
+   box-shadow:0 0 0 3px rgba(72,216,255,.13) !important;
+ }
+ body:not(.ext-compact) #ext-toast {
+   color:#fff !important;background:rgba(16,16,54,.92) !important;
+   border:1px solid rgba(220,220,255,.2) !important;border-radius:13px !important;
+   box-shadow:0 15px 40px rgba(0,0,0,.34) !important;backdrop-filter:blur(24px);
+ }
+ body.ext-big #bottom-row {
+   border:1px solid rgba(220,220,255,.18) !important;
+   background:rgba(12,13,43,.82) !important;backdrop-filter:blur(24px) !important;
+ }
+ /* Floating iPhone mode gets the same Aurora identity, without changing its clipped window geometry. */
+ body.ext-compact {
+   background:
+     radial-gradient(ellipse at 12% 8%,rgba(0,192,255,.34),transparent 42%),
+     radial-gradient(ellipse at 90% 92%,rgba(210,72,224,.32),transparent 44%),
+     linear-gradient(145deg,#11194d,#17113f 55%,#0b1c4b) !important;
+ }
+ body.ext-compact #ext-phone {
+   background:linear-gradient(145deg,#b4b5c9 0%,#555b82 18%,#252c52 48%,#111832 76%,#8990b4 100%) !important;
+   box-shadow:0 30px 90px rgba(2,3,25,.72),0 0 0 1px rgba(229,226,255,.38),
+              0 0 46px rgba(70,180,255,.24),0 0 90px rgba(196,80,255,.12) !important;
+ }
+ body.ext-compact #ext-bezel {
+   background:linear-gradient(145deg,#050713,#161b35 48%,#03050e) !important;
+   box-shadow:inset 0 0 0 1px rgba(231,231,255,.22),inset 0 0 14px #000,
+              0 0 0 1px rgba(255,255,255,.08) !important;
+ }
+ body.ext-compact #ext-phone .hw,
+ body.ext-compact #ext-camctl {
+   background:linear-gradient(90deg,#353a62,#a3a5cb 48%,#353a62) !important;
+   box-shadow:0 0 10px rgba(126,178,255,.24) !important;
+ }
+ body.ext-compact .ext-fab {
+   width:46px !important;height:46px !important;border-radius:15px !important;
+   background:linear-gradient(145deg,rgba(116,195,255,.34),rgba(174,111,255,.23)) !important;
+   border:1px solid rgba(225,220,255,.30) !important;
+   box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 28px rgba(0,0,0,.36),
+              0 0 26px rgba(104,178,255,.16) !important;
+   backdrop-filter:blur(24px) saturate(160%) !important;
+ }
+ body.ext-compact .ext-pill {
+   min-height:37px !important;padding:0 13px !important;border-radius:11px !important;
+   color:#f8f6ff !important;font-size:12px !important;font-weight:600 !important;
+   background:linear-gradient(135deg,rgba(39,38,91,.92),rgba(17,22,57,.90)) !important;
+   border:1px solid rgba(220,216,255,.20) !important;
+   box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 7px 20px rgba(0,0,0,.27) !important;
+   backdrop-filter:blur(24px) saturate(155%) !important;
+ }
+ body.ext-compact .ext-pill:hover {
+   background:linear-gradient(135deg,rgba(42,135,185,.48),rgba(129,75,183,.46)) !important;
+   border-color:rgba(119,220,255,.48) !important;
+ }
+ body.ext-compact .ext-pill.on {
+   color:#a9f2ff !important;background:linear-gradient(135deg,rgba(23,125,160,.40),rgba(100,74,175,.40)) !important;
+   border-color:rgba(95,220,255,.48) !important;
+ }
+ body.ext-compact #ext-homebar {
+   background:rgba(227,224,255,.25) !important;border:1px solid rgba(255,255,255,.24) !important;
+   box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 5px 18px rgba(0,0,0,.30) !important;
+   backdrop-filter:blur(18px) !important;
+ }
+ body.ext-compact #ext-homebar span {background:rgba(255,255,255,.96) !important;}
+ body.ext-compact #ext-toast {
+   color:#fff !important;background:rgba(17,16,54,.94) !important;
+   border:1px solid rgba(220,220,255,.24) !important;border-radius:13px !important;
+   box-shadow:0 14px 36px rgba(0,0,0,.38) !important;backdrop-filter:blur(22px) !important;
+ }
+ @media (max-width:900px) {
+   body:not(.ext-compact) #topbar {margin:8px !important;border-radius:14px !important;}
+   body:not(.ext-compact) #workspace {padding:3px 8px 10px !important;gap:8px !important;}
+   body:not(.ext-compact) #stage {border-radius:18px !important;}
+   body:not(.ext-compact) #bottom-row {width:calc(100% - 18px);max-width:none;}
+ }
+
 </style>
 """
 
