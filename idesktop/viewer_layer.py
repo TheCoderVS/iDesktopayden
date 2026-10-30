@@ -319,6 +319,95 @@ try { for (const s of ['left','right']) if (!localStorage.getItem('tray-'+s)) lo
    body:not(.ext-compact) #stage { border-radius: 20px !important; }
    body:not(.ext-compact) #bottom-row { width: calc(100% - 20px); max-width: none; }
  }
+
+ /* ── Floating Phone: full Aurora redesign (the default compact view) ── */
+ body.ext-compact {
+   background:
+     radial-gradient(ellipse at 18% 18%, rgba(86,112,220,.22), transparent 42%),
+     radial-gradient(ellipse at 82% 82%, rgba(145,92,230,.18), transparent 44%),
+     #080b13 !important;
+ }
+ body.ext-compact #ext-phone {
+   background: linear-gradient(145deg,#252b3b 0%,#101725 28%,#39445b 50%,#111827 76%,#30394d 100%) !important;
+   box-shadow: 0 28px 80px rgba(0,0,0,.65), 0 0 0 1px rgba(190,211,255,.30),
+               0 0 42px rgba(105,145,255,.15) !important;
+ }
+ body.ext-compact #ext-bezel {
+   background: linear-gradient(145deg,#03050a,#111827 48%,#05070c) !important;
+   box-shadow: inset 0 0 0 1px rgba(220,232,255,.18), inset 0 0 12px #000,
+               0 0 0 1px rgba(255,255,255,.06) !important;
+ }
+ body.ext-compact #ext-phone .hw,
+ body.ext-compact #ext-camctl {
+   background: linear-gradient(90deg,#252d40,#7886a2 48%,#273047) !important;
+   border-radius: 4px !important;
+   box-shadow: 0 0 8px rgba(145,170,230,.20) !important;
+ }
+ body.ext-compact #ext-ctl {
+   font-family: Inter,"Segoe UI Variable","Segoe UI",system-ui,sans-serif !important;
+   filter: drop-shadow(0 12px 24px rgba(0,0,0,.28));
+ }
+ body.ext-compact .ext-fab {
+   width: 46px !important; height: 46px !important;
+   border-radius: 16px !important;
+   color: #f5f7ff !important;
+   background: linear-gradient(145deg,rgba(122,151,255,.34),rgba(72,91,151,.22)) !important;
+   border: 1px solid rgba(190,211,255,.28) !important;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.24), 0 8px 24px rgba(0,0,0,.35),
+               0 0 24px rgba(115,145,255,.12) !important;
+   backdrop-filter: blur(24px) saturate(160%) !important;
+   -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+   transition: transform .18s ease, background .18s ease !important;
+ }
+ body.ext-compact .ext-fab:hover { transform: translateY(-2px); background:rgba(135,164,255,.38) !important; }
+ body.ext-compact .ext-pill {
+   min-height: 36px !important;
+   padding: 0 13px !important;
+   border-radius: 12px !important;
+   color: #edf2ff !important;
+   font-size: 12px !important;
+   font-weight: 600 !important;
+   letter-spacing: .01em;
+   background: linear-gradient(135deg,rgba(35,47,72,.88),rgba(17,25,42,.82)) !important;
+   border: 1px solid rgba(190,211,255,.17) !important;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 5px 16px rgba(0,0,0,.22) !important;
+   backdrop-filter: blur(22px) saturate(150%) !important;
+   -webkit-backdrop-filter: blur(22px) saturate(150%) !important;
+   transition: transform .16s ease, border-color .16s ease, background .16s ease !important;
+ }
+ body.ext-compact .ext-pill:hover {
+   transform: translateX(2px);
+   background: linear-gradient(135deg,rgba(65,83,125,.94),rgba(28,39,65,.92)) !important;
+   border-color: rgba(121,228,242,.38) !important;
+ }
+ body.ext-compact .ext-pill.on {
+   color: #9cecf5 !important;
+   background: linear-gradient(135deg,rgba(28,116,139,.35),rgba(35,65,115,.42)) !important;
+   border-color: rgba(121,228,242,.35) !important;
+ }
+ body.ext-compact #ext-homebar {
+   height: 7px !important;
+   border-radius: 999px !important;
+   background: rgba(232,239,255,.22) !important;
+   border: 1px solid rgba(255,255,255,.18) !important;
+   box-shadow: 0 3px 14px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.25) !important;
+   backdrop-filter: blur(16px) !important;
+   -webkit-backdrop-filter: blur(16px) !important;
+ }
+ body.ext-compact #ext-homebar span {
+   width: 48% !important; height: 3px !important;
+   background: rgba(248,250,255,.92) !important;
+ }
+ body.ext-compact #ext-toast {
+   padding: 10px 15px !important;
+   border: 1px solid rgba(190,211,255,.22) !important;
+   border-radius: 13px !important;
+   background: rgba(15,22,38,.90) !important;
+   color: #f5f7ff !important;
+   box-shadow: 0 12px 30px rgba(0,0,0,.4) !important;
+   backdrop-filter: blur(22px) !important;
+ }
+
 </style>
 """
 
