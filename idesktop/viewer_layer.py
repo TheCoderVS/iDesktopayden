@@ -127,6 +127,68 @@ try { for (const s of ['left','right']) if (!localStorage.getItem('tray-'+s)) lo
  }
 
 
+
+ /* ── Aurora wallpaper: inspired by the supplied visual reference ── */
+ body:not(.ext-compact) {
+   isolation: isolate;
+   background: #20245d !important;
+ }
+ html:has(body:not(.ext-compact)) {
+   background:
+     radial-gradient(ellipse 42% 34% at 8% 2%, rgba(0,205,255,.98), transparent 72%),
+     radial-gradient(ellipse 40% 34% at 93% 8%, rgba(0,137,255,.88), transparent 72%),
+     radial-gradient(ellipse 42% 30% at 76% 100%, rgba(221,53,218,.92), transparent 70%),
+     radial-gradient(ellipse 36% 28% at 0% 82%, rgba(160,83,255,.85), transparent 72%),
+     linear-gradient(135deg,#101c60 0%,#29266f 48%,#151b58 100%) !important;
+ }
+ body:not(.ext-compact)::before,
+ body:not(.ext-compact)::after {
+   content: "";
+   position: fixed;
+   z-index: -1;
+   pointer-events: none;
+   filter: blur(2px);
+ }
+ body:not(.ext-compact)::before {
+   width: 78vw; height: 34vh; left: 10vw; top: -13vh;
+   border-radius: 0 0 50% 50%;
+   transform: rotate(-8deg);
+   background: linear-gradient(175deg,rgba(0,205,255,.88),rgba(77,91,220,.72) 48%,rgba(224,76,218,.72));
+   box-shadow: 0 24px 80px rgba(0,0,0,.20);
+ }
+ body:not(.ext-compact)::after {
+   width: 76vw; height: 34vh; right: -8vw; bottom: -17vh;
+   border-radius: 50% 50% 0 0;
+   transform: rotate(-9deg);
+   background: linear-gradient(8deg,rgba(0,174,255,.92),rgba(94,79,220,.78) 48%,rgba(229,65,205,.82));
+   box-shadow: 0 -20px 80px rgba(0,0,0,.20);
+ }
+ body:not(.ext-compact) #topbar,
+ body:not(.ext-compact) #left-tray,
+ body:not(.ext-compact) #right-tray,
+ body:not(.ext-compact) #stage,
+ body:not(.ext-compact) #bottom-row {
+   background-color: rgba(13, 16, 47, .78) !important;
+   border-color: rgba(202, 211, 255, .16) !important;
+   box-shadow: 0 22px 60px rgba(8, 9, 40, .32), inset 0 1px 0 rgba(255,255,255,.09) !important;
+   backdrop-filter: blur(28px) saturate(155%) !important;
+   -webkit-backdrop-filter: blur(28px) saturate(155%) !important;
+ }
+ body:not(.ext-compact) #left-tray,
+ body:not(.ext-compact) #right-tray {
+   background: linear-gradient(155deg,rgba(22,24,65,.86),rgba(12,15,48,.82)) !important;
+ }
+ body:not(.ext-compact) #stage {
+   background: linear-gradient(145deg,rgba(21,24,69,.62),rgba(10,13,43,.82)) !important;
+ }
+ body:not(.ext-compact) #topbar button:hover,
+ body:not(.ext-compact) #left-tray button:hover,
+ body:not(.ext-compact) #right-tray button:hover,
+ body:not(.ext-compact) #bottom-row .btn:hover {
+   background: linear-gradient(135deg,rgba(121,210,255,.22),rgba(211,124,255,.16)) !important;
+   border-color: rgba(190,177,255,.42) !important;
+ }
+
  /* ── iDesktop / Aurora interface refresh ─────────────────────────────── */
  :root {
    color-scheme: dark;
